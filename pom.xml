@@ -31,6 +31,28 @@
 
   <build>
     <plugins>
+      <!-- Enforces Maven version 3.0.3+ cleanly without using deprecated prerequisites -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>3.5.0</version>
+        <executions>
+          <execution>
+            <id>enforce-maven</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireMavenVersion>
+                  <version>[3.0.3,)</version>
+                </requireMavenVersion>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
@@ -41,12 +63,12 @@
 
       <plugin>
         <artifactId>maven-release-plugin</artifactId>
+        <version>3.1.1</version> <!-- Added version tag to fix missing version warning -->
         <configuration>
           <autoVersionSubmodules>true</autoVersionSubmodules>
         </configuration>
       </plugin>
-
-        </plugins>
+    </plugins>
 
     <pluginManagement>
       <plugins>
@@ -79,8 +101,6 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>2.4</version>
         </plugin>
-
-      
 
         <plugin>
           <artifactId>maven-surefire-report-plugin</artifactId>
@@ -156,10 +176,5 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-
-
-  <prerequisites>
-    <maven>3.0.3</maven>
-  </prerequisites>
 
 </project>
