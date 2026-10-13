@@ -30,6 +30,11 @@
   </distributionManagement>
 
   <build>
+    <finalName>ROOT</finalName> <!-- This forces the file to be ROOT.war -->
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+           
     <plugins>
       <!-- Enforces Maven version 3.0.3+ cleanly without using deprecated prerequisites -->
       <plugin>
