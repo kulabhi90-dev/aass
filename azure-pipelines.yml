@@ -20,3 +20,9 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'C:\Users\kulab\OneDrive\Desktop\aass-master\webapp\target'
+    Contents: '**/.WAR'
+    TargetFolder: 'C:\Program Files\Apache Software Foundation\Tomcat 11.0_Tomcat12\webapps'
