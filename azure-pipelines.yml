@@ -27,10 +27,11 @@ steps:
   displayName: 'Diagnose File Locations'
 
 - task: CopyFiles@2
+  displayName: 'Stage WAR file for download'
   inputs:
-    SourceFolder: 'C:\Users\kulab\OneDrive\Desktop\aass-master\webapp\target'
-    Contents: '**/.WAR'
-    TargetFolder: 'C:\Program Files\Apache Software Foundation\Tomcat 11.0_Tomcat12\webapps'
+    SourceFolder: '$(Build.SourcesDirectory)/webapp/target'
+    Contents: '*.war'  # <--- Changed from 'webapp.war' to a wildcard match
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)/webapp/target'  # <--- Uses the Linux agent path
