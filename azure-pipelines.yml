@@ -28,6 +28,6 @@ steps:
     TargetFolder: 'C:\Program Files\Apache Software Foundation\Tomcat 11.0_Tomcat12\webapps'
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+    SourceFolder: '$(Build.SourcesDirectory)/webapp/target'  # <--- Uses the Linux agent path
+    Contents: 'webapp.war'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
