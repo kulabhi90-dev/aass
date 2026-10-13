@@ -21,6 +21,11 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
+- script: |
+    echo "=== Listing Root Workspace ==="
+    ls -R $(Build.SourcesDirectory)
+  displayName: 'Diagnose File Locations'
+
 - task: CopyFiles@2
   inputs:
     SourceFolder: 'C:\Users\kulab\OneDrive\Desktop\aass-master\webapp\target'
